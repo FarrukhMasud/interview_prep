@@ -1,15 +1,12 @@
 class Solution:
     def twoSum(self, nums, target: int):
-        left = 0
-        right = len(nums) - 1
-        while left < right:
-            sum = nums[left] + nums[right]
-            if sum == target:
-                return [left, right]
-            if sum > target:
-                right = right - 1
-            else:
-                left = left + 1
+        candidates = dict()
+        for i in range(0, len(nums)):
+            required = target - nums[i]
+            if required in candidates:
+                result = [candidates[required], i]
+                return result
+            candidates[nums[i]] = i
 
 
 sol = Solution()
