@@ -5,22 +5,19 @@ class Solution:
         index1 = 0
         for i, c in enumerate(s):
             if c in char_loc:
-                if len(char_loc) > max_length:
-                    max_length = len(char_loc)
+                length = len(char_loc)
+                if length > max_length:
+                    max_length = length
                 index = char_loc[c]
                 for j in range(index1, index + 1):
-                    if s[j] in char_loc and char_loc[s[j]] == j:
+                    if s[j] in char_loc:
                         char_loc.pop(s[j], None)
-                # chars_remove = []
-                # for cc in char_loc:
-                #     ci = char_loc[cc]
-                #     if ci <= index:
-                #         chars_remove.append(cc)
-                # for ccc in chars_remove:
-                #     char_loc.pop(ccc, None)
+                index1 = index + 1
+
             char_loc[c] = i
-        if len(char_loc) > max_length:
-            max_length = len(char_loc)
+        length = len(char_loc)
+        if length > max_length:
+            max_length = length
         return max_length
 
 
