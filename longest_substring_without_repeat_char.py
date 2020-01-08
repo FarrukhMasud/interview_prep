@@ -10,9 +10,9 @@ class Solution:
                     max_length = length
                 index = char_loc[c]
                 for j in range(index1, index + 1):
-                    if s[j] in char_loc:
+                    if s[j] in char_loc and char_loc[s[j]] == j:
                         char_loc.pop(s[j], None)
-                index1 = index + 1
+                index1 = index
 
             char_loc[c] = i
         length = len(char_loc)
@@ -22,5 +22,7 @@ class Solution:
 
 
 sol = Solution()
-x = sol.lengthOfLongestSubstring("bpfbhmipx")
+# "abcabcbb"
+# "`bpfbhmipx`"
+x = sol.lengthOfLongestSubstring("abba")
 print(x)
