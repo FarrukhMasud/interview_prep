@@ -9,27 +9,16 @@ class Solution:
         result = ListNode(-1)
         root = result
         carry = 0
-        while l1 is not None and l2 is not None:
-            sum = int(l1.val + l2.val + carry)
+        while l1 is not None or l2 is not None:
+            x1 = 0 if l1 is None else l1.val
+            x2 = 0 if l2 is None else l2.val
+            sum = int(x1 + x2 + carry)
             carry = int(sum / 10)
             sum = sum % 10
             result.next = ListNode(int(sum))
             result = result.next
-            l1 = l1.next
-            l2 = l2.next
-        while l1 is not None:
-            sum = int(l1.val + carry)
-            result.next = ListNode(sum % 10)
-            carry = int(sum / 10)
-            result = result.next
-            l1 = l1.next
-
-        while l2 is not None:
-            sum = int(l2.val + carry)
-            result.next = ListNode(sum % 10)
-            carry = int(sum / 10)
-            result = result.next
-            l2 = l2.next
+            l1 = l1.next if l1 is not None else None
+            l2 = l2.next if l2 is not None else None
 
         if carry > 0:
             result.next = ListNode(carry)
