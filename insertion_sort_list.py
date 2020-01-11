@@ -60,10 +60,3 @@ def createSortedList(x: List[int]) -> ListNode:
         y = ListNode(x[i])
         head = sol.insertNode(head, y)
     return head
-
-
-lst = createList([0, 4, 2, 1, 3])
-sol = Solution()
-lst = sol.insertionSortList(lst)
-
-printList(lst)
