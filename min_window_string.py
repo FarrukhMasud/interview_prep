@@ -1,3 +1,6 @@
+# This would only work if the t have unique characters
+
+
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
         if s == t:
