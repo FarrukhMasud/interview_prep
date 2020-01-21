@@ -7,7 +7,7 @@ class Solution(object):
         :type matrix: List[List[int]]
         :rtype: void Do not return anything, modify matrix in-place instead.
         """
-        MODIFIED = -1000000
+        MODIFIED = None
         R = len(matrix)
         C = len(matrix[0])
         for r in range(R):
