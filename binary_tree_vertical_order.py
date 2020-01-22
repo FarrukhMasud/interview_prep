@@ -11,45 +11,29 @@ class TreeNode:
 
 class Solution:
     def verticalOrder(self, root: TreeNode) -> List[List[int]]:
-        traversal = dict()
-        minLevel, maxLevel = self._verticalOrder(root, 0, traversal, 0, 0, 0)
-        result = []
-        for i in range(minLevel, maxLevel + 1):
-            x = traversal[i]
-            x = sorted(x, key=lambda t: t[1])
-            y = [q[0] for q in x]
-            result.append(y)
-        return result
-
-    def _verticalOrder(
-        self,
-        root: TreeNode,
-        level: int,
-        traversal,
-        minLevel: int,
-        maxLevel: int,
-        depth: int,
-    ):
         if root is None:
-            return minLevel, maxLevel
-        if level in traversal:
-            traversal[level].append((root.val, depth))
-        else:
-            traversal[level] = [(root.val, depth)]
-        temp_min = minLevel
-        temp_max = maxLevel
-        if root.left is not None:
-            temp_min, temp_max = self._verticalOrder(
-                root.left, level - 1, traversal, minLevel - 1, maxLevel, depth + 1
-            )
-        temp_min1 = minLevel
-        temp_max1 = maxLevel
-        if root.right is not None:
-            temp_min1, temp_max1 = self._verticalOrder(
-                root.right, level + 1, traversal, minLevel, maxLevel + 1, depth + 1
-            )
-
-        return min(temp_min, temp_min1, minLevel), max(maxLevel, temp_max1, temp_max)
+            return None
+        queue = deque()
+        queue.append((root, 0))
+        minLevel = 0
+        maxLevel = 0
+        levelTraversal = dict()
+        result = []
+        while len(queue) > 0:
+            r = queue.popleft()
+            if r[1] in levelTraversal:
+                levelTraversal[r[1]].append(r[0].val)
+            else:
+                levelTraversal[r[1]] = [r[0].val]
+            minLevel = min(minLevel, r[1])
+            maxLevel = max(maxLevel, r[1])
+            if r[0].left:
+                queue.append((r[0].left, r[1] - 1))
+            if r[0].right:
+                queue.append((r[0].right, r[1] + 1))
+        for i in range(minLevel, maxLevel + 1):
+            result.append(levelTraversal[i])
+        return result
 
 
 root = TreeNode(3, TreeNode(9), TreeNode(20, TreeNode(15), TreeNode(7)))
