@@ -15,6 +15,8 @@ class TimeMap:
         if key not in self.store:
             return None
         arr = self.store[key]
+        if arr[0][0] > timestamp:
+            return ""
         l = 0
         r = len(arr) - 1
         while l <= r:
