@@ -26,18 +26,18 @@ class Solution:
         return res
 
 
-# arr = [
-#     "mission statement",
-#     "a quick bite to eat",
-#     "a chip off the old block",
-#     "chocolate bar",
-#     "mission impossible",
-#     "a man on a mission",
-#     "block party",
-#     "eat my words",
-#     "bar of soap",
-# ]
+arr = [
+    "mission statement",
+    "a quick bite to eat",
+    "a chip off the old block",
+    "chocolate bar",
+    "mission impossible",
+    "a man on a mission",
+    "block party",
+    "eat my words",
+    "bar of soap",
+]
 
-arr = ["a", "b", "a"]
+# arr = ["a", "b", "a"]
 result = Solution().beforeAndAfterPuzzles(arr)
 print(result)
