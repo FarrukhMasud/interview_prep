@@ -14,32 +14,30 @@ class Solution:
             else:
                 firstWord[sp[0]] = [phrase]
 
-        result = []
+        result = set()
         for phrase in phrases:
             sp = phrase.split(sep=" ")
             if sp[-1] in firstWord:
                 x = " ".join(sp[0:-1])
                 y = firstWord[sp[-1]]
                 for z in y:
-                    if z == phrase:
-                        continue
-                    result.append((x + " " + z).strip())
-
-        return sorted(result)
+                    result.add((x + " " + z).strip())
+        res = [s for s in result]
+        return res
 
 
-arr = [
-    "mission statement",
-    "a quick bite to eat",
-    "a chip off the old block",
-    "chocolate bar",
-    "mission impossible",
-    "a man on a mission",
-    "block party",
-    "eat my words",
-    "bar of soap",
-]
+# arr = [
+#     "mission statement",
+#     "a quick bite to eat",
+#     "a chip off the old block",
+#     "chocolate bar",
+#     "mission impossible",
+#     "a man on a mission",
+#     "block party",
+#     "eat my words",
+#     "bar of soap",
+# ]
 
-# arr = ["a", "b", "a"]
+arr = ["a", "b", "a"]
 result = Solution().beforeAndAfterPuzzles(arr)
 print(result)
