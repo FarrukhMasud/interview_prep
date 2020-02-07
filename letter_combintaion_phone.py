@@ -40,6 +40,7 @@ class Solution:
         return result
 
 
+print(len(None))
 n = "232"
 result = Solution().letterCombinations(n)
 print(result)
