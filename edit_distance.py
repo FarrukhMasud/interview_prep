@@ -18,12 +18,12 @@ class Solution:
                 if word1[j - 1] != word2[i - 1]:
                     dp[i][j] = min(dp[i - 1][j], dp[i - i][j - 1], dp[i][j - 1]) + 1
                 else:
-                    dp[i][j] = dp[i - 1][j - 1]
+                    dp[i][j] = min(dp[i - 1][j], dp[i - i][j - 1], dp[i][j - 1])
 
         return dp[len(word2)][len(word1)]
 
 
-word1 = "sea"
-word2 = "ate"
+word1 = "abc"
+word2 = "acb"
 result = Solution().minDistance(word1, word2)
 print(result)
