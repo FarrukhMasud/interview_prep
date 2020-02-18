@@ -3,9 +3,10 @@ from typing import List
 
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
-        x = set()
-        for i in nums:
-            if i in x:
-                return True
-            x.add(i)
-        return False
+        x = set(nums)
+        return len(x) != len(nums)
+
+
+i = [1, 2, 3, 4, 5, 6, 7]
+result = Solution().containsDuplicate(i)
+print(result)
