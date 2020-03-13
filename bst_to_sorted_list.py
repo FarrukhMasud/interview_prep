@@ -9,11 +9,12 @@ class Solution:
     def treeToDoublyList(self, root: "Node") -> "Node":
         head = self._treeToDoublyList(root)
         first = head
+        x = head
         while first.left is not None:
             first = first.left
-        last = head
-        while last.right is not None:
-            last = last.right
+        last = x
+        # while last.right is not None:
+        #     last = last.right
         first.left = last
         last.right = first
         return first
