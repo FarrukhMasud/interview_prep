@@ -23,4 +23,5 @@ i = TreeNode(
 )
 
 result = Solution().invertTree(i)
+
 print(result)
