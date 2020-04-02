@@ -7,10 +7,7 @@ class Solution:
             return False
         p = re.compile("\A(-|\+)?((\d+(\.\d*)?)|(\.\d+))(e(-|\+)?\d+)?\Z")
         result = p.match(s)
-        if result:
-            return True
-        else:
-            return False
+        return result is not None
 
 
 tests = [
@@ -34,6 +31,6 @@ s = Solution()
 for test in tests:
     r = s.isNumber(test[0])
     if r == test[1]:
-        print("Test passed\t" + test[0])
+        print("Test passed\t:" + test[0])
     else:
-        print("Test failed\t" + test[0])
+        print("Test failed\t:" + test[0])
