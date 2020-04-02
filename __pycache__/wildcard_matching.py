@@ -23,17 +23,24 @@ class Solution:
             return True
 
         if si >= len(s) or pi >= len(p):
-            self.cache.add("==" + s + "--" + p)
             return False
-
+        if "--" + s[si:] + "==" + p[pi] in self.cache:
+            return False
         if p[pi] == "?":
             return self._isMatch(s, si + 1, p, pi + 1)
         elif p[pi] == "*":
-            return (
-                self._isMatch(s, si + 1, p, pi + 1)
-                or self._isMatch(s, si + 1, p, pi)
-                or self._isMatch(s, si, p, pi + 1)
-            )
+            x1 = self._isMatch(s, si + 1, p, pi + 1)
+            if x1:
+                return True
+            self.cache.add("--" + s[si + 1 :] + "==" + p[pi + 1 :])
+            x2 = self._isMatch(s, si, p, pi + 1)
+            if x2:
+                return True
+            self.cache.add("--" + s[si:] + "==" + p[pi + 1 :])
+            x3 = self._isMatch(s, si + 1, p, pi)
+            if x3:
+                return True
+            self.cache.add("--" + s[si + 1 :] + "==" + p[pi:])
         else:
             if s[si] != p[pi]:
                 self.cache.add("==" + s + "--" + p)
