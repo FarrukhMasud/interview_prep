@@ -15,15 +15,14 @@ class Solution:
 
         for i in range(1, len(dp)):
             for j in range(1, len(dp[i])):
+                dp[i][j] = min(dp[i - 1][j], dp[i - i][j - 1], dp[i][j - 1])
                 if word1[j - 1] != word2[i - 1]:
-                    dp[i][j] = min(dp[i - 1][j], dp[i - i][j - 1], dp[i][j - 1]) + 1
-                else:
-                    dp[i][j] = min(dp[i - 1][j], dp[i - i][j - 1], dp[i][j - 1])
+                    dp[i][j] += 1
 
         return dp[len(word2)][len(word1)]
 
 
-word1 = "abc"
-word2 = "acb"
+word1 = "horse"
+word2 = "ros"
 result = Solution().minDistance(word1, word2)
 print(result)
