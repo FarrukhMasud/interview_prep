@@ -14,7 +14,7 @@ class Solution:
                 temp = prices[i] - minPrice
                 if temp > maxProfit:
                     maxProfit = temp
-        return maxProfit if maxProfit > 0 else 0
+        return maxProfit
 
 
 arr = [7, 1, 5, 3, 6, 4]
